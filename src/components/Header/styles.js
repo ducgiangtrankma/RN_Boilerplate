@@ -3,6 +3,8 @@ export default StyleSheet.create({
   container: {
     height: 52,
     flexDirection: 'row',
+    borderBottomWidth: 3,
+    borderBottomColor: 'rgba(52, 52, 52, 0.06)',
   },
   contentLeft: {
     flex: 1,
