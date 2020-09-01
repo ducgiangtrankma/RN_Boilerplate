@@ -1,4 +1,4 @@
 export default {
-  nameScreen: 'Trang chủ ',
+  nameScreen: 'Trang sau ',
   logout: 'Đăng xuất',
 };

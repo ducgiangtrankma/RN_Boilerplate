@@ -1,4 +1,4 @@
 export default {
-  nameScreen: 'Home Screen',
+  nameScreen: 'Detail Screen',
   logout: 'Log Out',
 };
