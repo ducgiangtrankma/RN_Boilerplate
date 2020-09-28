@@ -1,3 +1,4 @@
 import {changeLanguage} from './changeLanguage';
 import {changeFontSize} from './changeFontSize';
-export {changeFontSize, changeLanguage};
+import {setStatusConnect} from './setStatusConnect';
+export {changeFontSize, changeLanguage, setStatusConnect};
