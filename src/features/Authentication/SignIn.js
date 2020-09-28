@@ -4,8 +4,6 @@ import {styles} from './styles';
 
 export default function SignIn({props, navigation}) {
   const signIn = () => {
-    console.log(navigation.navigate);
-    // navigation.navigate('Main');
     navigation.replace('Main');
   };
   return (

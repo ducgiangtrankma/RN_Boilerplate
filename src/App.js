@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import RootNavigation from './navigation/rootnavigation';
+import NetInfo from '@react-native-community/netinfo';
 //config Redux
-import {Provider} from 'react-redux';
+import {Provider, useDispatch} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import rootSaga from './redux/saga/rootSaga';
 import createSagaMiddleware from 'redux-saga';

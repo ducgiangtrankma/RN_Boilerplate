@@ -61,3 +61,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, null)(AppText);
+
+// example :  <AppText fontSize={20} i18nKey={'logout'} />
