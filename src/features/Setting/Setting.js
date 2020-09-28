@@ -20,7 +20,7 @@ export default function Setting({props, navigation}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={logOut}>
-        <AppText i18nKey={'logout'} />
+        <AppText fontSize={20} i18nKey={'logout'} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {

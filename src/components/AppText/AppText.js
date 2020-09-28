@@ -29,10 +29,14 @@ class AppText extends React.Component {
     this.setState({i18n});
   };
   render() {
-    const {i18nKey, style, numberOfLines} = this.props; // Custom props
+    const percentFontSize = this.props.sizeScale;
+    console.log(percentFontSize);
+    const {i18nKey, style, numberOfLines, fontSize} = this.props; // Custom props
     const {i18n} = this.state;
     return (
-      <Text style={style} numberOfLines={numberOfLines}>
+      <Text
+        style={[style, {fontSize: fontSize * percentFontSize}]}
+        numberOfLines={numberOfLines}>
         {i18nKey ? i18n.t(i18nKey) : this.props.children}
       </Text>
     );
@@ -41,15 +45,18 @@ class AppText extends React.Component {
 AppText.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   numberOfLines: PropTypes.number,
+  fontSize: PropTypes.number,
 };
 
 AppText.defaultProps = {
   style: {},
   numberOfLines: 1,
+  fontSize: 15,
 };
 const mapStateToProps = (state) => {
   return {
     language: state.languageReducer.language,
+    sizeScale: state.fontsSizeReducer.sizeScale,
   };
 };
 
