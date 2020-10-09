@@ -19,6 +19,7 @@ export default function RootNavigation() {
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
