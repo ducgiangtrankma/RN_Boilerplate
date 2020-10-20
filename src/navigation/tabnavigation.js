@@ -33,11 +33,11 @@ export default function TabCustom() {
           // console.log(row);
           upLoadImport(token, row.hint).then((res) => {
             console.log('Res', res.code);
-            if (res.code === 'R_201') {
+            if (res.code === 'R_401') {
               //xoa phan tu co id  = row.id
               console.log('Xoa', row.id);
             }
-            alert(res.code);
+            //alert(res.code);
           });
         }
         setArrRes(temp);
