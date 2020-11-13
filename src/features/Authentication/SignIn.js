@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
-
+import ApiClient from '../../config/Api';
 export default function SignIn({props, navigation}) {
   const signIn = () => {
     navigation.replace('Main');
