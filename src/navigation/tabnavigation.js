@@ -27,9 +27,9 @@ const TabCustom = () => {
         options={{
           tabBarIcon: ({color, focused}) => {
             if (focused) {
-              return <AntDesign name="home" size={20} color={'#2F80ED'} />;
+              return <AntDesign name="setting" size={20} color={'#2F80ED'} />;
             } else {
-              return <AntDesign name="home" size={20} color={'gray'} />;
+              return <AntDesign name="setting" size={20} color={'gray'} />;
             }
           },
         }}

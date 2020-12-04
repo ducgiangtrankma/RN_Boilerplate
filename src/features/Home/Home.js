@@ -1,15 +1,9 @@
-import React, {useEffect} from 'react';
-import {View, TouchableOpacity, SafeAreaView} from 'react-native';
+import React from 'react';
+import {View, SafeAreaView, Text} from 'react-native';
 import {styles} from './styles';
-import Header from '../../components/Header/index';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Text} from '../../components';
-import {useSelector} from 'react-redux';
+import {Header} from '../../components';
 export default function Home({props, navigation}) {
-  const connection = useSelector(
-    (state) => state.statusConnectReducer.statusConnect,
-  );
-  console.log(connection);
   const openDrawer = () => {
     navigation.openDrawer();
   };
@@ -27,7 +21,7 @@ export default function Home({props, navigation}) {
         onPressLeft={openDrawer}
       />
       <View style={styles.content}>
-        {connection ? <Text>Có kết nối mạng</Text> : <Text>Mất kết nối</Text>}
+        <Text>Home Screen</Text>
       </View>
     </SafeAreaView>
   );

@@ -1,44 +1,66 @@
-//Sử dụng khi app chỉ thay đổi fontsize và fonts. Không thay đổi ngôn ngữ
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
-import {useSelector} from 'react-redux';
+import {Text} from 'react-native';
+import I18n from '../../assets/lang/i18n';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-function TextComponent(props) {
-  const percentFontSize = useSelector((state) => state.fontsSizeReducer)
-    .sizeScale;
-  // const defaultFontFamily = useSelector(
-  //   (state) => state.fontFamilyReducer.defaultFontFamily,
-  // );
-  const {style, fontSize, ...rest} = props;
-  return (
-    <Text
-      style={[
-        styles.container,
-        style,
-        {
-          fontSize: fontSize * percentFontSize,
-          //  fontFamily: defaultFontFamily
-        },
-      ]}
-      {...rest}
-    />
-  );
+class AppText extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      i18n: I18n,
+    };
+  }
+  componentWillMount() {
+    const {language} = this.props;
+    if (language) {
+      this.setMainLocaleLanguage(language);
+    }
+  }
+  componentWillReceiveProps = (nextProps) => {
+    const {language} = nextProps;
+    if (language) {
+      this.setMainLocaleLanguage(language);
+    }
+  };
+  setMainLocaleLanguage = (language) => {
+    let i18n = this.state.i18n;
+    i18n.locale = language;
+    this.setState({i18n});
+  };
+  render() {
+    const percentFontSize = this.props.sizeScale;
+    console.log(percentFontSize);
+    const {i18nKey, style, numberOfLines, fontSize, ...rest} = this.props; // Custom props
+    const {i18n} = this.state;
+    return (
+      <Text
+        style={[style, {fontSize: fontSize * percentFontSize}]}
+        numberOfLines={numberOfLines}
+        {...rest}>
+        {i18nKey ? i18n.t(i18nKey) : this.props.children}
+      </Text>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    color: '#000',
-  },
-});
-
-TextComponent.propTypes = {
+AppText.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  numberOfLines: PropTypes.number,
   fontSize: PropTypes.number,
 };
 
-TextComponent.defaultProps = {
+AppText.defaultProps = {
   style: {},
-  fontSize: 13,
+  numberOfLines: 1,
+  fontSize: 15,
+};
+const mapStateToProps = (state) => {
+  return {
+    language: state.languageReducer.language,
+    sizeScale: state.fontsSizeReducer.sizeScale,
+  };
 };
 
-export default TextComponent;
+export default connect(mapStateToProps, null)(AppText);
+
+// example :  <AppText fontSize={20} i18nKey={'logout'} />
